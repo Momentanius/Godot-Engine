@@ -7,3 +7,15 @@ func _ready():
 	print(story % prompt)
 	# O $ funciona como um atalho para get_node("Blackboard/StoryText")
 	$Blackboard/StoryText.bbcode_text = story % prompt;
+	$Blackboard/TextBox.text = ""
+
+func _on_TextureButton_pressed():
+	var new_text = $Blackboard/TextBox.get_text()
+	_on_TextBox_text_entered(new_text)
+	$Blackboard/TextBox.text = ""
+
+func _on_TextBox_text_entered(new_text):
+	$Blackboard/StoryText.bbcode_text = new_text;
+	$Blackboard/TextBox.text = ""
+
+
