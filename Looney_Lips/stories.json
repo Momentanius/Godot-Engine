@@ -1,0 +1,21 @@
+[{
+		"prompt":["a name",
+                  "a city", 
+                  "a person", 
+                  "a feeling"
+                 ],
+		"story": "%s is the most important figure in %s. %s must really %s him, otherwise you would not be playing this game."
+		},
+		{
+		"prompt":["the first part of the meme", "the second part of the meme", "the third part of the meme"],
+		"story": "What is a %s? A miserable little pile of %s. But enough talk, %s."
+		},
+		{
+		"prompt":["a fruit", "a taste", "another fruit"],
+		"story": "Do you like %s? I think they are pretty %s, but not as good as %s."
+		},
+		{
+		"prompt":["a game", "another gamet"],
+		"story": "I really like %s, but %s is a better game."
+		}
+		]
