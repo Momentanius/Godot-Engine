@@ -56,7 +56,6 @@ world_limit = 3000
 
 frames = SubResource( 1 )
 animation = "run"
-frame = 1
 playing = true
 script = ExtResource( 8 )
 

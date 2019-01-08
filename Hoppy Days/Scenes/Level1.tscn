@@ -6,7 +6,9 @@
 [ext_resource path="res://Scenes/Spike.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/SpikeBot.tscn" type="PackedScene" id=5]
 
-[node name="Level1" type="Node2D" index="0"]
+[node name="Level1" type="Node2D"]
+
+editor/display_folded = true
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
