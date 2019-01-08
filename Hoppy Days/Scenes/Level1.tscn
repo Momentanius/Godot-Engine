@@ -9,11 +9,13 @@
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
 position = Vector2( 560.762, 1470.29 )
+world_limit = 3000
 
 [node name="Camera2D" parent="Player" index="2" instance=ExtResource( 2 )]
 
 zoom = Vector2( 4, 4 )
 limit_left = -999999
+limit_bottom = 3000
 smoothing_enabled = true
 _sections_unfolded = [ "Limit", "Smoothing" ]
 
