@@ -25,6 +25,10 @@ func fall(delta):
 	if position.y > world_limit:
 		Global.GameState.end_game()
 
+func hurt():
+	print('isonhere')
+	$AnimatedSprite.play('hurt')
+	motion.y = -1200
 
 
 func run():
