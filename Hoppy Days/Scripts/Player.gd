@@ -8,6 +8,9 @@ const GRAVITY = 2300
 const UP = Vector2(0, -1)
 const JUMP_SPEED = -850
 
+func _ready():
+	Global.Player = self
+
 #Toda vez que passar pra uma nova frame / faça alguma coisa (Physics Process)
 func _physics_process(delta):
 	update_motion(delta)
@@ -20,10 +23,9 @@ func fall(delta):
 		motion.y += GRAVITY * delta
 	
 	if position.y > world_limit:
-		end_game()
+		Global.GameState.end_game()
 
-func end_game():
-	get_tree().change_scene("res://GameOver.tscn")
+
 
 func run():
 	if Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left"):
