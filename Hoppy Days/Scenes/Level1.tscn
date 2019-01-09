@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/GameState.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -6,11 +6,13 @@
 [ext_resource path="res://Scenes/PlatformTiles.tres" type="TileSet" id=4]
 [ext_resource path="res://Scenes/Spike.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/SpikeBot.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=7]
 
-[node name="Level1" type="Node2D" index="0"]
+[node name="Level1" type="Node2D"]
 
 script = ExtResource( 1 )
 starting_lives = 3
+coin_target = 4
 
 [node name="Player" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -43,12 +45,10 @@ collision_layer = 2
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( -917477, 1, 0, -786393, 1, 0, -589797, 1, 0, -262025, 0, 0, -196496, 0, 0, -130967, 0, 0, 95, 0, 0, 102, 0, 0, 65578, 4, 0, 65582, 4, 0, 65623, 0, 0, 196659, 4, 0, 196662, 0, 0, 196667, 0, 0, 196672, 0, 0, 196677, 0, 0, 196682, 0, 0, 196687, 0, 0, 327691, 4, 0, 327727, 4, 0, 393222, 4, 0, 393232, 0, 0, 393259, 4, 0, 458777, 0, 0, 458788, 0, 0, 458812, 0, 0, 524289, 4, 0, 589908, 0, 0, 655435, 0, 0, 720963, 0, 0 )
+tile_data = PoolIntArray( -917477, 1, 0, -786393, 1, 0, -589797, 1, 0, -262025, 0, 0, -196532, 0, 0, -196496, 0, 0, -131003, 0, 0, -130967, 0, 0, -65474, 0, 0, 55, 0, 0, 95, 0, 0, 102, 0, 0, 65578, 4, 0, 65582, 4, 0, 65623, 0, 0, 196659, 4, 0, 196662, 0, 0, 196667, 0, 0, 196672, 0, 0, 196677, 0, 0, 196682, 0, 0, 196687, 0, 0, 327691, 4, 0, 327727, 4, 0, 393222, 4, 0, 393232, 0, 0, 393259, 4, 0, 458777, 0, 0, 458788, 0, 0, 458812, 0, 0, 524289, 4, 0, 589908, 0, 0, 655435, 0, 0, 720963, 0, 0 )
 _sections_unfolded = [ "Collision" ]
 
 [node name="Spikes" type="Node2D" parent="." index="2"]
-
-editor/display_folded = true
 
 [node name="SpikesTop" parent="Spikes" index="0" instance=ExtResource( 5 )]
 
@@ -57,6 +57,28 @@ position = Vector2( 1321.35, 1748.66 )
 [node name="SpikesBot" parent="Spikes" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( 2044.26, 1513.25 )
+
+[node name="Coins" type="Node2D" parent="." index="3"]
+
+[node name="AnimatedSprite" parent="Coins" index="0" instance=ExtResource( 7 )]
+
+position = Vector2( 886.104, 1665.85 )
+frame = 4
+
+[node name="AnimatedSprite2" parent="Coins" index="1" instance=ExtResource( 7 )]
+
+position = Vector2( 251.684, 1590.33 )
+frame = 3
+
+[node name="AnimatedSprite3" parent="Coins" index="2" instance=ExtResource( 7 )]
+
+position = Vector2( 1837.73, 1620.54 )
+frame = 2
+
+[node name="AnimatedSprite4" parent="Coins" index="3" instance=ExtResource( 7 )]
+
+position = Vector2( 1321.64, 1587.81 )
+frame = 2
 
 [connection signal="body_entered" from="Spikes/SpikesBot" to="Spikes/SpikesBot" method="_on_SpikesTop_body_entered"]
 
