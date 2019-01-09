@@ -25,6 +25,8 @@ func fall(delta):
 	
 	if position.y > world_limit:
 		Global.GameState.end_game()
+		
+	motion.y = clamp(motion.y, (JUMP_SPEED * JUMP_BOOST) -JUMP_SPEED) #Para que possa bouncear
 
 func hurt():
 	print('isonhere')
