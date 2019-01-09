@@ -38,5 +38,5 @@ func life_up():
 
 func end_game():
 	Global.DeathSFX.play()
-	get_tree().change_scene("res://GameOver.tscn")
+	get_tree().change_scene(Global.GameOver)
 	
