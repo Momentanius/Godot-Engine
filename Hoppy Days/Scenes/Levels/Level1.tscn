@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/GameState.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -17,8 +17,9 @@
 [ext_resource path="res://Scenes/JumpPad.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Clouds.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Scenes/Spikeman.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Portal.tscn" type="PackedScene" id=18]
 
-[node name="Level1" type="Node2D"]
+[node name="Level1" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 starting_lives = 3
@@ -55,7 +56,7 @@ collision_layer = 2
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( -917477, 1, 0, -786393, 1, 0, -655340, 4, 0, -589797, 1, 0, -327665, 1, 0, -262120, 1, 0, -262110, 1, 0, -196566, 1, 0, -196532, 0, 0, -131003, 0, 0, -65474, 0, 0, -65452, 4, 0, 55, 0, 0, 65578, 4, 0, 65582, 4, 0, 196659, 4, 0, 196687, 0, 0, 327691, 4, 0, 327727, 4, 0, 393222, 4, 0, 393232, 0, 0, 393259, 4, 0, 458777, 0, 0, 458788, 0, 0, 458812, 0, 0, 524289, 4, 0, 589908, 0, 0, 655435, 0, 0, 720963, 0, 0 )
+tile_data = PoolIntArray( -917477, 1, 0, -786393, 1, 0, -655340, 4, 0, -589797, 1, 0, -327665, 1, 0, -327636, 0, 0, -262120, 1, 0, -262110, 1, 0, -196532, 0, 0, -131003, 0, 0, -65474, 0, 0, -65452, 4, 0, 55, 0, 0, 65574, 0, 0, 65582, 4, 0, 196659, 4, 0, 196687, 0, 0, 327691, 4, 0, 327727, 4, 0, 393222, 4, 0, 393232, 0, 0, 393238, 0, 0, 393259, 4, 0, 458788, 0, 0, 458812, 0, 0, 524289, 4, 0, 524317, 0, 0, 589908, 0, 0, 589919, 4, 0, 655435, 0, 0, 720963, 0, 0 )
 _sections_unfolded = [ "Collision" ]
 
 [node name="Spikes" type="Node2D" parent="." index="2"]
@@ -72,237 +73,294 @@ position = Vector2( 2044.26, 1513.25 )
 
 [node name="Coins" type="Node2D" parent="." index="3"]
 
-editor/display_folded = true
-
 [node name="AnimatedSprite" parent="Coins" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( 886.104, 1665.85 )
-frame = 5
+frame = 2
 
 [node name="AnimatedSprite2" parent="Coins" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( 251.684, 1590.33 )
-frame = 1
+frame = 4
 
 [node name="AnimatedSprite3" parent="Coins" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( 1798.77, 1312.96 )
-frame = 2
+frame = 5
 
 [node name="AnimatedSprite4" parent="Coins" index="3" instance=ExtResource( 7 )]
 
 position = Vector2( 1321.64, 1587.81 )
-frame = 2
+frame = 5
 
 [node name="AnimatedSprite5" parent="Coins" index="4" instance=ExtResource( 7 )]
 
 position = Vector2( 2024.45, 1296.7 )
-frame = 1
+frame = 4
 
 [node name="AnimatedSprite6" parent="Coins" index="5" instance=ExtResource( 7 )]
 
 position = Vector2( 2557.99, 1221.36 )
+frame = 3
 
 [node name="AnimatedSprite7" parent="Coins" index="6" instance=ExtResource( 7 )]
 
 position = Vector2( 3003.21, 916.551 )
+frame = 3
 
 [node name="AnimatedSprite11" parent="Coins" index="7" instance=ExtResource( 7 )]
 
 position = Vector2( 3129.93, 906.277 )
+frame = 3
 
 [node name="AnimatedSprite12" parent="Coins" index="8" instance=ExtResource( 7 )]
 
 position = Vector2( 3255.19, 911.287 )
-frame = 5
+frame = 2
 
 [node name="AnimatedSprite13" parent="Coins" index="9" instance=ExtResource( 7 )]
 
 position = Vector2( 3383.8, 912.957 )
-frame = 5
+frame = 2
 
 [node name="AnimatedSprite14" parent="Coins" index="10" instance=ExtResource( 7 )]
 
 position = Vector2( 3514.07, 921.308 )
-frame = 5
+frame = 2
 
 [node name="AnimatedSprite15" parent="Coins" index="11" instance=ExtResource( 7 )]
 
 position = Vector2( 3624.3, 841.14 )
-frame = 3
 
 [node name="AnimatedSprite16" parent="Coins" index="12" instance=ExtResource( 7 )]
 
 position = Vector2( 3707.81, 737.588 )
+
+[node name="AnimatedSprite49" parent="Coins" index="13" instance=ExtResource( 7 )]
+
+position = Vector2( 4683.09, 1599.98 )
+frame = 5
+
+[node name="AnimatedSprite50" parent="Coins" index="14" instance=ExtResource( 7 )]
+
+position = Vector2( 4714, 1420.71 )
+frame = 5
+
+[node name="AnimatedSprite51" parent="Coins" index="15" instance=ExtResource( 7 )]
+
+position = Vector2( 4772.73, 1269.25 )
+frame = 4
+
+[node name="AnimatedSprite52" parent="Coins" index="16" instance=ExtResource( 7 )]
+
+position = Vector2( 4871.63, 1148.71 )
 frame = 3
 
-[node name="AnimatedSprite17" parent="Coins" index="13" instance=ExtResource( 7 )]
+[node name="AnimatedSprite53" parent="Coins" index="17" instance=ExtResource( 7 )]
+
+position = Vector2( 4967.45, 1037.44 )
+frame = 3
+
+[node name="AnimatedSprite54" parent="Coins" index="18" instance=ExtResource( 7 )]
+
+position = Vector2( 5088, 1040.53 )
+frame = 3
+
+[node name="AnimatedSprite55" parent="Coins" index="19" instance=ExtResource( 7 )]
+
+position = Vector2( 5109.63, 1229.07 )
+frame = 2
+
+[node name="AnimatedSprite56" parent="Coins" index="20" instance=ExtResource( 7 )]
+
+position = Vector2( 5125.09, 1429.98 )
+frame = 2
+
+[node name="AnimatedSprite57" parent="Coins" index="21" instance=ExtResource( 7 )]
+
+position = Vector2( 5128.18, 1596.89 )
+frame = 1
+
+[node name="AnimatedSprite58" parent="Coins" index="22" instance=ExtResource( 7 )]
+
+position = Vector2( 5143.63, 1732.89 )
+frame = 1
+
+[node name="AnimatedSprite59" parent="Coins" index="23" instance=ExtResource( 7 )]
+
+position = Vector2( 5050.9, 898.349 )
+
+[node name="AnimatedSprite17" parent="Coins" index="24" instance=ExtResource( 7 )]
 
 position = Vector2( 2851.01, 722.556 )
-frame = 2
+frame = 5
 
-[node name="AnimatedSprite18" parent="Coins" index="14" instance=ExtResource( 7 )]
+[node name="AnimatedSprite18" parent="Coins" index="25" instance=ExtResource( 7 )]
 
 position = Vector2( 2903.27, 861.153 )
-frame = 1
+frame = 4
 
-[node name="AnimatedSprite8" parent="Coins" index="15" instance=ExtResource( 7 )]
+[node name="AnimatedSprite8" parent="Coins" index="26" instance=ExtResource( 7 )]
 
 position = Vector2( 2756.63, 1235.06 )
-frame = 5
+frame = 2
 
-[node name="AnimatedSprite9" parent="Coins" index="16" instance=ExtResource( 7 )]
-
-position = Vector2( 2790.88, 1101.49 )
-frame = 5
-
-[node name="AnimatedSprite10" parent="Coins" index="17" instance=ExtResource( 7 )]
+[node name="AnimatedSprite9" parent="Coins" index="27" instance=ExtResource( 7 )]
 
 position = Vector2( 2790.88, 1101.49 )
-frame = 5
+frame = 2
 
-[node name="AnimatedSprite19" parent="Coins" index="18" instance=ExtResource( 7 )]
+[node name="AnimatedSprite10" parent="Coins" index="28" instance=ExtResource( 7 )]
+
+position = Vector2( 2790.88, 1101.49 )
+frame = 2
+
+[node name="AnimatedSprite19" parent="Coins" index="29" instance=ExtResource( 7 )]
 
 position = Vector2( 3243.02, 649.346 )
-frame = 5
+frame = 2
 
-[node name="AnimatedSprite20" parent="Coins" index="19" instance=ExtResource( 7 )]
+[node name="AnimatedSprite20" parent="Coins" index="30" instance=ExtResource( 7 )]
 
 position = Vector2( 3040.8, 394.874 )
-frame = 5
+frame = 2
 
-[node name="AnimatedSprite21" parent="Coins" index="20" instance=ExtResource( 7 )]
+[node name="AnimatedSprite21" parent="Coins" index="31" instance=ExtResource( 7 )]
 
 position = Vector2( 3477.04, 401.69 )
-frame = 5
+frame = 2
 
-[node name="AnimatedSprite22" parent="Coins" index="21" instance=ExtResource( 7 )]
+[node name="AnimatedSprite22" parent="Coins" index="32" instance=ExtResource( 7 )]
 
 position = Vector2( 819.062, 989.342 )
-frame = 4
+frame = 1
 
-[node name="AnimatedSprite23" parent="Coins" index="22" instance=ExtResource( 7 )]
+[node name="AnimatedSprite23" parent="Coins" index="33" instance=ExtResource( 7 )]
 
 position = Vector2( 685.776, 995.494 )
-frame = 4
+frame = 1
 
-[node name="AnimatedSprite24" parent="Coins" index="23" instance=ExtResource( 7 )]
+[node name="AnimatedSprite24" parent="Coins" index="34" instance=ExtResource( 7 )]
 
 position = Vector2( 564.794, 997.544 )
-frame = 3
 
-[node name="AnimatedSprite25" parent="Coins" index="24" instance=ExtResource( 7 )]
+[node name="AnimatedSprite25" parent="Coins" index="35" instance=ExtResource( 7 )]
 
 position = Vector2( 634.512, 864.258 )
-frame = 2
+frame = 5
 
-[node name="AnimatedSprite26" parent="Coins" index="25" instance=ExtResource( 7 )]
+[node name="AnimatedSprite26" parent="Coins" index="36" instance=ExtResource( 7 )]
 
 position = Vector2( 240.806, 942.179 )
-frame = 2
+frame = 5
 
-[node name="AnimatedSprite27" parent="Coins" index="26" instance=ExtResource( 7 )]
+[node name="AnimatedSprite27" parent="Coins" index="37" instance=ExtResource( 7 )]
 
 position = Vector2( 87.0143, 927.826 )
-frame = 1
+frame = 4
 
-[node name="AnimatedSprite28" parent="Coins" index="27" instance=ExtResource( 7 )]
+[node name="AnimatedSprite28" parent="Coins" index="38" instance=ExtResource( 7 )]
 
 position = Vector2( -11.4122, 936.028 )
+frame = 3
 
-[node name="AnimatedSprite29" parent="Coins" index="28" instance=ExtResource( 7 )]
+[node name="AnimatedSprite29" parent="Coins" index="39" instance=ExtResource( 7 )]
 
 position = Vector2( 144.43, 788.388 )
+frame = 3
 
-[node name="AnimatedSprite30" parent="Coins" index="29" instance=ExtResource( 7 )]
+[node name="AnimatedSprite30" parent="Coins" index="40" instance=ExtResource( 7 )]
 
 position = Vector2( 13.1944, 784.287 )
-frame = 5
+frame = 2
 
-[node name="AnimatedSprite31" parent="Coins" index="30" instance=ExtResource( 7 )]
+[node name="AnimatedSprite31" parent="Coins" index="41" instance=ExtResource( 7 )]
 
 position = Vector2( 419.204, 460.299 )
-frame = 4
+frame = 1
 
-[node name="AnimatedSprite32" parent="Coins" index="31" instance=ExtResource( 7 )]
+[node name="AnimatedSprite32" parent="Coins" index="42" instance=ExtResource( 7 )]
 
 position = Vector2( 419.204, 308.558 )
-frame = 4
+frame = 1
 
-[node name="AnimatedSprite33" parent="Coins" index="32" instance=ExtResource( 7 )]
+[node name="AnimatedSprite33" parent="Coins" index="43" instance=ExtResource( 7 )]
 
 position = Vector2( 991.146, 246.912 )
-frame = 3
 
-[node name="AnimatedSprite34" parent="Coins" index="33" instance=ExtResource( 7 )]
+[node name="AnimatedSprite34" parent="Coins" index="44" instance=ExtResource( 7 )]
 
 position = Vector2( 991.146, 137.318 )
-frame = 2
-
-[node name="AnimatedSprite35" parent="Coins" index="34" instance=ExtResource( 7 )]
-
-position = Vector2( 984.296, 20.8749 )
-frame = 1
-
-[node name="AnimatedSprite36" parent="Coins" index="35" instance=ExtResource( 7 )]
-
-position = Vector2( 984.296, -98.9931 )
-frame = 1
-
-[node name="AnimatedSprite37" parent="Coins" index="36" instance=ExtResource( 7 )]
-
-position = Vector2( 1066.49, -181.188 )
-
-[node name="AnimatedSprite40" parent="Coins" index="37" instance=ExtResource( 7 )]
-
-position = Vector2( 1066.49, -181.188 )
-
-[node name="AnimatedSprite38" parent="Coins" index="38" instance=ExtResource( 7 )]
-
-position = Vector2( 1241.16, -54.4706 )
-
-[node name="AnimatedSprite41" parent="Coins" index="39" instance=ExtResource( 7 )]
-
-position = Vector2( 1316.5, 65.3974 )
-
-[node name="AnimatedSprite42" parent="Coins" index="40" instance=ExtResource( 7 )]
-
-position = Vector2( 1408.97, 222.938 )
 frame = 5
 
-[node name="AnimatedSprite43" parent="Coins" index="41" instance=ExtResource( 7 )]
+[node name="AnimatedSprite35" parent="Coins" index="45" instance=ExtResource( 7 )]
 
-position = Vector2( 1474.04, 387.329 )
+position = Vector2( 984.296, 20.8749 )
 frame = 4
 
-[node name="AnimatedSprite44" parent="Coins" index="42" instance=ExtResource( 7 )]
+[node name="AnimatedSprite36" parent="Coins" index="46" instance=ExtResource( 7 )]
 
-position = Vector2( 1545.96, 503.772 )
+position = Vector2( 984.296, -98.9931 )
 frame = 4
 
-[node name="AnimatedSprite45" parent="Coins" index="43" instance=ExtResource( 7 )]
+[node name="AnimatedSprite37" parent="Coins" index="47" instance=ExtResource( 7 )]
 
-position = Vector2( 1655.56, 397.603 )
+position = Vector2( 1066.49, -181.188 )
 frame = 3
 
-[node name="AnimatedSprite46" parent="Coins" index="44" instance=ExtResource( 7 )]
+[node name="AnimatedSprite40" parent="Coins" index="48" instance=ExtResource( 7 )]
 
-position = Vector2( 1717.2, 483.223 )
+position = Vector2( 1066.49, -181.188 )
+frame = 3
+
+[node name="AnimatedSprite38" parent="Coins" index="49" instance=ExtResource( 7 )]
+
+position = Vector2( 1241.16, -54.4706 )
+frame = 3
+
+[node name="AnimatedSprite41" parent="Coins" index="50" instance=ExtResource( 7 )]
+
+position = Vector2( 1316.5, 65.3974 )
+frame = 3
+
+[node name="AnimatedSprite42" parent="Coins" index="51" instance=ExtResource( 7 )]
+
+position = Vector2( 1408.97, 222.938 )
 frame = 2
 
-[node name="AnimatedSprite47" parent="Coins" index="45" instance=ExtResource( 7 )]
+[node name="AnimatedSprite43" parent="Coins" index="52" instance=ExtResource( 7 )]
 
-position = Vector2( 1761.73, 377.054 )
-frame = 2
-
-[node name="AnimatedSprite48" parent="Coins" index="46" instance=ExtResource( 7 )]
-
-position = Vector2( 1830.22, 496.922 )
+position = Vector2( 1474.04, 387.329 )
 frame = 1
 
-[node name="AnimatedSprite39" parent="Coins" index="47" instance=ExtResource( 7 )]
+[node name="AnimatedSprite44" parent="Coins" index="53" instance=ExtResource( 7 )]
+
+position = Vector2( 1545.96, 503.772 )
+frame = 1
+
+[node name="AnimatedSprite45" parent="Coins" index="54" instance=ExtResource( 7 )]
+
+position = Vector2( 1655.56, 397.603 )
+
+[node name="AnimatedSprite46" parent="Coins" index="55" instance=ExtResource( 7 )]
+
+position = Vector2( 1717.2, 483.223 )
+frame = 5
+
+[node name="AnimatedSprite47" parent="Coins" index="56" instance=ExtResource( 7 )]
+
+position = Vector2( 1761.73, 377.054 )
+frame = 5
+
+[node name="AnimatedSprite48" parent="Coins" index="57" instance=ExtResource( 7 )]
+
+position = Vector2( 1830.22, 496.922 )
+frame = 4
+
+[node name="AnimatedSprite39" parent="Coins" index="58" instance=ExtResource( 7 )]
 
 position = Vector2( 1155.54, -143.515 )
+frame = 3
 
 [node name="Sounds" type="Node2D" parent="." index="4"]
 
@@ -349,11 +407,9 @@ script = ExtResource( 14 )
 
 [node name="JumpPads" type="Node2D" parent="." index="5"]
 
-editor/display_folded = true
-
 [node name="JumpPad" parent="JumpPads" index="0" instance=ExtResource( 15 )]
 
-position = Vector2( 1556.14, 1747.35 )
+position = Vector2( 1308.87, 1713.35 )
 
 [node name="JumpPad2" parent="JumpPads" index="1" instance=ExtResource( 15 )]
 
@@ -379,7 +435,13 @@ position = Vector2( 408.076, 638.141 )
 
 position = Vector2( 996.583, 385.187 )
 
+[node name="JumpPad8" parent="JumpPads" index="7" instance=ExtResource( 15 )]
+
+position = Vector2( 4675.68, 1850.89 )
+
 [node name="NPC" type="Node2D" parent="." index="6"]
+
+editor/display_folded = true
 
 [node name="Cloud" parent="NPC" index="0" instance=ExtResource( 16 )]
 
@@ -405,6 +467,12 @@ position = Vector2( 3992.85, 1438.04 )
 
 position = Vector2( 798.912, 353.648 )
 
+[node name="Portal" parent="." index="7" instance=ExtResource( 18 )]
+
+position = Vector2( 5153.89, 1833.62 )
+
 [connection signal="body_entered" from="Spikes/SpikesBot" to="Spikes/SpikesBot" method="_on_SpikesTop_body_entered"]
+
+[connection signal="body_entered" from="Portal" to="." method="_on_Portal_body_entered"]
 
 
