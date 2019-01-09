@@ -58,3 +58,4 @@ func jump():
 	if is_on_floor():
 		if Input.is_action_pressed("ui_up"):
 			motion.y = JUMP_SPEED
+			Global.JumpSFX.play()
