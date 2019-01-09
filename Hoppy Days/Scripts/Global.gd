@@ -7,6 +7,5 @@ var Player
 var GUI
 var JumpSFX
 var HurtSFX
-var coinSFX
 var DeathSFX
 

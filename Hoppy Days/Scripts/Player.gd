@@ -7,6 +7,7 @@ const SPEED = 750
 const GRAVITY = 2300
 const UP = Vector2(0, -1)
 const JUMP_SPEED = -850
+const JUMP_BOOST = 2
 
 func _ready():
 	Global.Player = self
@@ -59,3 +60,6 @@ func jump():
 		if Input.is_action_pressed("ui_up"):
 			motion.y = JUMP_SPEED
 			Global.JumpSFX.play()
+
+func boost():
+	motion.y = JUMP_SPEED * JUMP_BOOST
