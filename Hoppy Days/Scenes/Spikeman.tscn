@@ -92,6 +92,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 frames = SubResource( 1 )
 animation = "walk"
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D" index="1"]

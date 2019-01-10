@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/GameState.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -7,17 +7,18 @@
 [ext_resource path="res://Scenes/Spike.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/SpikeBot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=7]
-[ext_resource path="res://SFX/Summer_Park.ogg" type="AudioStream" id=8]
-[ext_resource path="res://SFX/jump1.ogg" type="AudioStream" id=9]
-[ext_resource path="res://Scripts/Jump.gd" type="Script" id=10]
-[ext_resource path="res://SFX/Death_sfx.ogg" type="AudioStream" id=11]
-[ext_resource path="res://Scripts/Death.gd" type="Script" id=12]
-[ext_resource path="res://SFX/pain.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Scripts/Pain.gd" type="Script" id=14]
-[ext_resource path="res://Scenes/JumpPad.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Scenes/Clouds.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Scenes/Spikeman.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Scenes/Portal.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/10Coin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SFX/Summer_Park.ogg" type="AudioStream" id=9]
+[ext_resource path="res://SFX/jump1.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Scripts/Jump.gd" type="Script" id=11]
+[ext_resource path="res://SFX/Death_sfx.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Scripts/Death.gd" type="Script" id=13]
+[ext_resource path="res://SFX/pain.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Scripts/Pain.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/JumpPad.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Clouds.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Spikeman.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Portal.tscn" type="PackedScene" id=19]
 
 [node name="Level1" type="Node2D" index="0"]
 
@@ -36,6 +37,13 @@ limit_left = -999999
 limit_bottom = 3000
 smoothing_enabled = true
 _sections_unfolded = [ "Limit", "Smoothing" ]
+
+[node name="PostHit" type="Timer" parent="Player" index="3"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = false
 
 [node name="TileMap" type="TileMap" parent="." index="1"]
 
@@ -73,298 +81,311 @@ position = Vector2( 2044.26, 1513.25 )
 
 [node name="Coins" type="Node2D" parent="." index="3"]
 
+editor/display_folded = true
+
 [node name="AnimatedSprite" parent="Coins" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( 886.104, 1665.85 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite2" parent="Coins" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( 251.684, 1590.33 )
-frame = 5
 
 [node name="AnimatedSprite3" parent="Coins" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( 1798.77, 1312.96 )
+frame = 5
 
 [node name="AnimatedSprite4" parent="Coins" index="3" instance=ExtResource( 7 )]
 
 position = Vector2( 1321.64, 1587.81 )
+frame = 5
 
 [node name="AnimatedSprite5" parent="Coins" index="4" instance=ExtResource( 7 )]
 
 position = Vector2( 2024.45, 1296.7 )
-frame = 5
 
 [node name="AnimatedSprite6" parent="Coins" index="5" instance=ExtResource( 7 )]
 
 position = Vector2( 2557.99, 1221.36 )
-frame = 4
+frame = 3
 
 [node name="AnimatedSprite7" parent="Coins" index="6" instance=ExtResource( 7 )]
 
 position = Vector2( 3003.21, 916.551 )
-frame = 4
+frame = 3
 
 [node name="AnimatedSprite11" parent="Coins" index="7" instance=ExtResource( 7 )]
 
 position = Vector2( 3129.93, 906.277 )
-frame = 4
+frame = 3
 
 [node name="AnimatedSprite12" parent="Coins" index="8" instance=ExtResource( 7 )]
 
 position = Vector2( 3255.19, 911.287 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite13" parent="Coins" index="9" instance=ExtResource( 7 )]
 
 position = Vector2( 3383.8, 912.957 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite14" parent="Coins" index="10" instance=ExtResource( 7 )]
 
 position = Vector2( 3514.07, 921.308 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite15" parent="Coins" index="11" instance=ExtResource( 7 )]
 
 position = Vector2( 3624.3, 841.14 )
-frame = 1
+frame = 0
 
 [node name="AnimatedSprite16" parent="Coins" index="12" instance=ExtResource( 7 )]
 
 position = Vector2( 3707.81, 737.588 )
-frame = 1
+frame = 0
 
 [node name="AnimatedSprite49" parent="Coins" index="13" instance=ExtResource( 7 )]
 
 position = Vector2( 4683.09, 1599.98 )
+frame = 5
 
 [node name="AnimatedSprite50" parent="Coins" index="14" instance=ExtResource( 7 )]
 
 position = Vector2( 4714, 1420.71 )
+frame = 5
 
 [node name="AnimatedSprite51" parent="Coins" index="15" instance=ExtResource( 7 )]
 
 position = Vector2( 4772.73, 1269.25 )
-frame = 5
 
 [node name="AnimatedSprite52" parent="Coins" index="16" instance=ExtResource( 7 )]
 
 position = Vector2( 4871.63, 1148.71 )
-frame = 4
+frame = 3
 
 [node name="AnimatedSprite53" parent="Coins" index="17" instance=ExtResource( 7 )]
 
 position = Vector2( 4967.45, 1037.44 )
-frame = 4
+frame = 3
 
 [node name="AnimatedSprite54" parent="Coins" index="18" instance=ExtResource( 7 )]
 
 position = Vector2( 5088, 1040.53 )
-frame = 4
+frame = 3
 
 [node name="AnimatedSprite55" parent="Coins" index="19" instance=ExtResource( 7 )]
 
 position = Vector2( 5109.63, 1229.07 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite56" parent="Coins" index="20" instance=ExtResource( 7 )]
 
 position = Vector2( 5125.09, 1429.98 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite57" parent="Coins" index="21" instance=ExtResource( 7 )]
 
 position = Vector2( 5128.18, 1596.89 )
-frame = 2
+frame = 5
 
 [node name="AnimatedSprite58" parent="Coins" index="22" instance=ExtResource( 7 )]
 
 position = Vector2( 5143.63, 1732.89 )
-frame = 2
+frame = 5
 
 [node name="AnimatedSprite59" parent="Coins" index="23" instance=ExtResource( 7 )]
 
 position = Vector2( 5050.9, 898.349 )
-frame = 1
+frame = 0
 
 [node name="AnimatedSprite17" parent="Coins" index="24" instance=ExtResource( 7 )]
 
 position = Vector2( 2851.01, 722.556 )
+frame = 5
 
 [node name="AnimatedSprite18" parent="Coins" index="25" instance=ExtResource( 7 )]
 
 position = Vector2( 2903.27, 861.153 )
-frame = 5
 
 [node name="AnimatedSprite8" parent="Coins" index="26" instance=ExtResource( 7 )]
 
 position = Vector2( 2756.63, 1235.06 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite9" parent="Coins" index="27" instance=ExtResource( 7 )]
 
 position = Vector2( 2790.88, 1101.49 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite10" parent="Coins" index="28" instance=ExtResource( 7 )]
 
 position = Vector2( 2790.88, 1101.49 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite19" parent="Coins" index="29" instance=ExtResource( 7 )]
 
 position = Vector2( 3243.02, 649.346 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite20" parent="Coins" index="30" instance=ExtResource( 7 )]
 
 position = Vector2( 3040.8, 394.874 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite21" parent="Coins" index="31" instance=ExtResource( 7 )]
 
 position = Vector2( 3477.04, 401.69 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite22" parent="Coins" index="32" instance=ExtResource( 7 )]
 
 position = Vector2( 819.062, 989.342 )
-frame = 2
+frame = 5
 
 [node name="AnimatedSprite23" parent="Coins" index="33" instance=ExtResource( 7 )]
 
 position = Vector2( 685.776, 995.494 )
-frame = 2
+frame = 5
 
 [node name="AnimatedSprite24" parent="Coins" index="34" instance=ExtResource( 7 )]
 
 position = Vector2( 564.794, 997.544 )
-frame = 1
+frame = 0
 
 [node name="AnimatedSprite25" parent="Coins" index="35" instance=ExtResource( 7 )]
 
 position = Vector2( 634.512, 864.258 )
+frame = 5
 
 [node name="AnimatedSprite26" parent="Coins" index="36" instance=ExtResource( 7 )]
 
 position = Vector2( 240.806, 942.179 )
+frame = 5
 
 [node name="AnimatedSprite27" parent="Coins" index="37" instance=ExtResource( 7 )]
 
 position = Vector2( 87.0143, 927.826 )
-frame = 5
 
 [node name="AnimatedSprite28" parent="Coins" index="38" instance=ExtResource( 7 )]
 
 position = Vector2( -11.4122, 936.028 )
-frame = 4
+frame = 3
 
 [node name="AnimatedSprite29" parent="Coins" index="39" instance=ExtResource( 7 )]
 
 position = Vector2( 144.43, 788.388 )
-frame = 4
+frame = 3
 
 [node name="AnimatedSprite30" parent="Coins" index="40" instance=ExtResource( 7 )]
 
 position = Vector2( 13.1944, 784.287 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite31" parent="Coins" index="41" instance=ExtResource( 7 )]
 
 position = Vector2( 419.204, 460.299 )
-frame = 2
+frame = 5
 
 [node name="AnimatedSprite32" parent="Coins" index="42" instance=ExtResource( 7 )]
 
 position = Vector2( 419.204, 308.558 )
-frame = 2
+frame = 5
 
 [node name="AnimatedSprite33" parent="Coins" index="43" instance=ExtResource( 7 )]
 
 position = Vector2( 991.146, 246.912 )
-frame = 1
+frame = 0
 
 [node name="AnimatedSprite34" parent="Coins" index="44" instance=ExtResource( 7 )]
 
 position = Vector2( 991.146, 137.318 )
+frame = 5
 
 [node name="AnimatedSprite35" parent="Coins" index="45" instance=ExtResource( 7 )]
 
 position = Vector2( 984.296, 20.8749 )
-frame = 5
 
 [node name="AnimatedSprite36" parent="Coins" index="46" instance=ExtResource( 7 )]
 
 position = Vector2( 984.296, -98.9931 )
-frame = 5
 
 [node name="AnimatedSprite37" parent="Coins" index="47" instance=ExtResource( 7 )]
 
 position = Vector2( 1066.49, -181.188 )
-frame = 4
+frame = 3
 
 [node name="AnimatedSprite40" parent="Coins" index="48" instance=ExtResource( 7 )]
 
 position = Vector2( 1066.49, -181.188 )
-frame = 4
+frame = 3
 
 [node name="AnimatedSprite38" parent="Coins" index="49" instance=ExtResource( 7 )]
 
 position = Vector2( 1241.16, -54.4706 )
-frame = 4
+frame = 3
 
 [node name="AnimatedSprite41" parent="Coins" index="50" instance=ExtResource( 7 )]
 
 position = Vector2( 1316.5, 65.3974 )
-frame = 4
+frame = 3
 
 [node name="AnimatedSprite42" parent="Coins" index="51" instance=ExtResource( 7 )]
 
 position = Vector2( 1408.97, 222.938 )
-frame = 3
+frame = 2
 
 [node name="AnimatedSprite43" parent="Coins" index="52" instance=ExtResource( 7 )]
 
 position = Vector2( 1474.04, 387.329 )
-frame = 2
+frame = 5
 
 [node name="AnimatedSprite44" parent="Coins" index="53" instance=ExtResource( 7 )]
 
 position = Vector2( 1545.96, 503.772 )
-frame = 2
+frame = 5
 
 [node name="AnimatedSprite45" parent="Coins" index="54" instance=ExtResource( 7 )]
 
 position = Vector2( 1655.56, 397.603 )
-frame = 1
+frame = 0
 
 [node name="AnimatedSprite46" parent="Coins" index="55" instance=ExtResource( 7 )]
 
 position = Vector2( 1717.2, 483.223 )
+frame = 5
 
 [node name="AnimatedSprite47" parent="Coins" index="56" instance=ExtResource( 7 )]
 
 position = Vector2( 1761.73, 377.054 )
+frame = 5
 
 [node name="AnimatedSprite48" parent="Coins" index="57" instance=ExtResource( 7 )]
 
 position = Vector2( 1830.22, 496.922 )
-frame = 5
 
 [node name="AnimatedSprite39" parent="Coins" index="58" instance=ExtResource( 7 )]
 
 position = Vector2( 1155.54, -143.515 )
-frame = 4
+frame = 3
 
-[node name="Sounds" type="Node2D" parent="." index="4"]
+[node name="SuperCoin" type="Node2D" parent="." index="4"]
+
+position = Vector2( 250, 250 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="10Coin" parent="SuperCoin" index="0" instance=ExtResource( 8 )]
+
+position = Vector2( 1917.43, 509.667 )
+
+[node name="Sounds" type="Node2D" parent="." index="5"]
 
 editor/display_folded = true
 
 [node name="Music" type="AudioStreamPlayer" parent="Sounds" index="0"]
 
-stream = ExtResource( 8 )
+stream = ExtResource( 9 )
 volume_db = -10.0
 pitch_scale = 1.0
 autoplay = true
@@ -373,99 +394,103 @@ bus = "Master"
 
 [node name="Jump" type="AudioStreamPlayer" parent="Sounds" index="1"]
 
-stream = ExtResource( 9 )
+stream = ExtResource( 10 )
 volume_db = -10.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="Death" type="AudioStreamPlayer" parent="Sounds" index="2"]
 
-stream = ExtResource( 11 )
+stream = ExtResource( 12 )
 volume_db = -5.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 
 [node name="Pain" type="AudioStreamPlayer" parent="Sounds" index="3"]
 
-stream = ExtResource( 13 )
+stream = ExtResource( 14 )
 volume_db = -10.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 
-[node name="JumpPads" type="Node2D" parent="." index="5"]
-
-[node name="JumpPad" parent="JumpPads" index="0" instance=ExtResource( 15 )]
-
-position = Vector2( 1308.87, 1713.35 )
-
-[node name="JumpPad2" parent="JumpPads" index="1" instance=ExtResource( 15 )]
-
-position = Vector2( 2309.39, 1468.43 )
-
-[node name="JumpPad3" parent="JumpPads" index="2" instance=ExtResource( 15 )]
-
-position = Vector2( 3129.32, 1203.53 )
-
-[node name="JumpPad4" parent="JumpPads" index="3" instance=ExtResource( 15 )]
-
-position = Vector2( 3591.84, 1136.25 )
-
-[node name="JumpPad5" parent="JumpPads" index="4" instance=ExtResource( 15 )]
-
-position = Vector2( 1253.3, 1017.52 )
-
-[node name="JumpPad6" parent="JumpPads" index="5" instance=ExtResource( 15 )]
-
-position = Vector2( 408.076, 638.141 )
-
-[node name="JumpPad7" parent="JumpPads" index="6" instance=ExtResource( 15 )]
-
-position = Vector2( 996.583, 385.187 )
-
-[node name="JumpPad8" parent="JumpPads" index="7" instance=ExtResource( 15 )]
-
-position = Vector2( 4675.68, 1850.89 )
-
-[node name="NPC" type="Node2D" parent="." index="6"]
+[node name="JumpPads" type="Node2D" parent="." index="6"]
 
 editor/display_folded = true
 
-[node name="Cloud" parent="NPC" index="0" instance=ExtResource( 16 )]
+[node name="JumpPad" parent="JumpPads" index="0" instance=ExtResource( 16 )]
+
+position = Vector2( 1308.87, 1713.35 )
+
+[node name="JumpPad2" parent="JumpPads" index="1" instance=ExtResource( 16 )]
+
+position = Vector2( 2309.39, 1468.43 )
+
+[node name="JumpPad3" parent="JumpPads" index="2" instance=ExtResource( 16 )]
+
+position = Vector2( 3129.32, 1203.53 )
+
+[node name="JumpPad4" parent="JumpPads" index="3" instance=ExtResource( 16 )]
+
+position = Vector2( 3591.84, 1136.25 )
+
+[node name="JumpPad5" parent="JumpPads" index="4" instance=ExtResource( 16 )]
+
+position = Vector2( 1253.3, 1017.52 )
+
+[node name="JumpPad6" parent="JumpPads" index="5" instance=ExtResource( 16 )]
+
+position = Vector2( 408.076, 638.141 )
+
+[node name="JumpPad7" parent="JumpPads" index="6" instance=ExtResource( 16 )]
+
+position = Vector2( 996.583, 385.187 )
+
+[node name="JumpPad8" parent="JumpPads" index="7" instance=ExtResource( 16 )]
+
+position = Vector2( 4675.68, 1850.89 )
+
+[node name="NPC" type="Node2D" parent="." index="7"]
+
+editor/display_folded = true
+
+[node name="Cloud" parent="NPC" index="0" instance=ExtResource( 17 )]
 
 position = Vector2( 1836.85, 622.049 )
 
-[node name="Cloud2" parent="NPC" index="1" instance=ExtResource( 16 )]
+[node name="Cloud2" parent="NPC" index="1" instance=ExtResource( 17 )]
 
 position = Vector2( 906.402, 81.4896 )
 
-[node name="Spikeman" parent="NPC" index="2" instance=ExtResource( 17 )]
+[node name="Spikeman" parent="NPC" index="2" instance=ExtResource( 18 )]
 
 position = Vector2( 2692.01, 1249.63 )
 
-[node name="Spikeman2" parent="NPC" index="3" instance=ExtResource( 17 )]
+[node name="Spikeman2" parent="NPC" index="3" instance=ExtResource( 18 )]
 
 position = Vector2( 3428.16, 1120.45 )
 
-[node name="Spikeman3" parent="NPC" index="4" instance=ExtResource( 17 )]
+[node name="Spikeman3" parent="NPC" index="4" instance=ExtResource( 18 )]
 
 position = Vector2( 3992.85, 1438.04 )
 
-[node name="Spikeman4" parent="NPC" index="5" instance=ExtResource( 17 )]
+[node name="Spikeman4" parent="NPC" index="5" instance=ExtResource( 18 )]
 
 position = Vector2( 798.912, 353.648 )
 
-[node name="Portal" parent="." index="7" instance=ExtResource( 18 )]
+[node name="Portal" parent="." index="8" instance=ExtResource( 19 )]
 
 position = Vector2( 5153.89, 1833.62 )
+
+[connection signal="timeout" from="Player/PostHit" to="." method="_on_PostHit_timeout"]
 
 [connection signal="body_entered" from="Spikes/SpikesBot" to="Spikes/SpikesBot" method="_on_SpikesTop_body_entered"]
 

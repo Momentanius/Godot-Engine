@@ -54,12 +54,13 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="Coin" type="AnimatedSprite"]
+[node name="Coin" type="AnimatedSprite" index="0"]
 
 position = Vector2( 12.5102, 12.5102 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "default"
+frame = 4
 playing = true
 script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]

@@ -26,13 +26,15 @@ func fall(delta):
 	if position.y > world_limit:
 		Global.GameState.end_game()
 		
-	motion.y = clamp(motion.y, (JUMP_SPEED * JUMP_BOOST) -JUMP_SPEED) #Para que possa bouncear
+	motion.y = clamp(motion.y, (JUMP_SPEED * JUMP_BOOST), -JUMP_SPEED) #Para que possa bouncear
 
 func hurt():
-	print('isonhere')
 	$AnimatedSprite.play('hurt')
 	motion.y = -1200
+	Global.HurtSFX.play()
 
+func postInvincibility():
+	$AnimationPlayer.play("postHit")
 
 func run():
 	if Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left"):

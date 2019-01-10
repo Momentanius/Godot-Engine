@@ -6,6 +6,8 @@ export var coin_target = 4 #how many coins for an extra live
 var lives
 var coins = 0
 
+var postInvincibility = false
+
 func _ready():
 	Global.GameState = self
 	lives = starting_lives
@@ -16,15 +18,19 @@ func update_GUI():
 	Global.GUI.update_GUI(coins, lives)
 
 func hurt():
-	lives -= 1
-	if lives < 0:
-		end_game()
-	Global.Player.hurt()
-	Global.GUI.playAnimation("Hurt")
-	update_GUI()
-	
-func coin_up():
-	coins+=1
+	if not postInvincibility:
+		postInvincibility = true
+		$Player/PostHit.start()
+		Global.Player.postInvincibility()
+		lives -= 1
+		if lives < 0:
+			end_game()
+		Global.Player.hurt()
+		Global.GUI.playAnimation("Hurt")
+		update_GUI()
+
+func coin_up(qtd):
+	coins+=qtd
 	Global.GUI.playAnimation("CoinPulse")
 	update_GUI()
 	var multiple_of_coin_target = (coins % coin_target) == 0
@@ -46,3 +52,7 @@ func win_game():
 
 func _on_Portal_body_entered(body):
 	win_game()
+
+
+func _on_PostHit_timeout():
+	postInvincibility = false
