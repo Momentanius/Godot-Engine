@@ -1,10 +1,25 @@
 extends "res://Scripts/Character.gd"
 
 var motion = Vector2()
+var torchHidden = true
 
 func _process(delta):
 	update_motion(delta)
 	move_and_slide(motion)
+
+#É chamado se o jogador apertar um botão
+func _input(event):
+	if Input.is_action_just_pressed("ui_select"):
+		light_torch()
+
+
+
+func light_torch():
+	if $Torch.enabled:
+		$Torch.enabled = false
+	else:
+		$Torch.enabled = true
+	
 
 func update_motion(delta):
 	look_at(get_global_mouse_position())
