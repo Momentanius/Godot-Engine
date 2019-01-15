@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Navigation2D.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Destinations.gd" type="Script" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Characters/SecurityCamera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://TileSets/AutoTileWalls.tres" type="TileSet" id=6]
-[ext_resource path="res://Scenes/Characters/Guard.tscn" type="PackedScene" id=7]
-[ext_resource path="res://TileSets/Furniture.tres" type="TileSet" id=8]
+[ext_resource path="res://Scripts/VisionMode.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Characters/Guard.tscn" type="PackedScene" id=8]
+[ext_resource path="res://TileSets/Furniture.tres" type="TileSet" id=9]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -80,7 +81,6 @@ tile_data = PoolIntArray( -917476, 7, 0, -851940, 7, 0, -851939, 7, 0, -851938, 
 
 [node name="Player" parent="." index="2" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 413.484, 267.098 )
 
 [node name="Camera2D" type="Camera2D" parent="Player" index="2"]
@@ -107,6 +107,13 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
+
+[node name="VisionModeTimer" type="Timer" parent="Player" index="5"]
+
+process_mode = 1
+wait_time = 1.25
+one_shot = false
+autostart = false
 
 [node name="SecurityCameras" type="Node2D" parent="." index="3"]
 
@@ -162,27 +169,37 @@ format = 1
 tile_data = PoolIntArray( -917477, 0, 262144, -917476, 0, 262146, -917475, 0, 262146, -917474, 0, 262145, -851941, 0, 327682, -851938, 0, 327682, -786405, 0, 327682, -786402, 0, 327680, -786401, 0, 262146, -786400, 0, 262146, -786399, 0, 262145, -720871, 0, 262144, -720870, 0, 262146, -720869, 0, 327681, -720863, 0, 327682, -655335, 0, 327682, -655327, 0, 327682, -589799, 0, 327682, -589792, 0, 262151, -589791, 0, 524291, -524267, 0, 262144, -524266, 0, 262146, -524265, 0, 262146, -524264, 0, 262146, -524263, 0, 327681, -524256, 0, 327687, -524255, 0, 589829, -524254, 0, 262145, -458731, 0, 327682, -458718, 0, 327680, -458717, 0, 262146, -458716, 0, 262145, -393212, 0, 262144, -393211, 0, 262146, -393210, 0, 262146, -393209, 0, 262146, -393208, 0, 262146, -393207, 0, 262146, -393206, 0, 262146, -393205, 0, 262146, -393204, 0, 262146, -393203, 0, 262146, -393202, 0, 262145, -393195, 0, 327682, -393180, 0, 327682, -327676, 0, 327682, -327666, 0, 327683, -327665, 0, 262146, -327664, 0, 262146, -327663, 0, 262146, -327662, 0, 262146, -327661, 0, 262146, -327660, 0, 262146, -327659, 0, 327681, -327654, 0, 327685, -327651, 0, 327685, -327644, 0, 327682, -262140, 0, 327682, -262137, 0, 458758, -262130, 0, 327682, -262118, 0, 327682, -262115, 0, 327682, -262108, 0, 327682, -196604, 0, 327682, -196597, 0, 458758, -196594, 0, 327682, -196582, 0, 327680, -196581, 0, 262146, -196580, 0, 262146, -196579, 0, 327681, -196575, 0, 262144, -196574, 0, 262146, -196573, 0, 262146, -196572, 0, 327681, -131068, 0, 327680, -131067, 0, 262146, -131066, 0, 262145, -131063, 0, 458758, -131058, 0, 327682, -131053, 0, 327685, -131039, 0, 327682, -65530, 0, 327682, -65522, 0, 327682, -65517, 0, 262150, -65503, 0, 327682, 6, 0, 327682, 14, 0, 327682, 33, 0, 327682, 65537, 0, 262144, 65538, 0, 262146, 65539, 0, 262146, 65540, 0, 262146, 65541, 0, 262146, 65542, 0, 327681, 65546, 0, 327686, 65547, 0, 262146, 65548, 0, 262146, 65549, 0, 262146, 65550, 0, 327681, 65562, 0, 262144, 65563, 0, 262146, 65564, 0, 262146, 65565, 0, 262146, 65566, 0, 262146, 65567, 0, 262146, 65568, 0, 262146, 65569, 0, 327681, 131073, 0, 327682, 131089, 0, 458758, 131098, 0, 327682, 196609, 0, 327682, 196622, 0, 458758, 196631, 0, 262144, 196632, 0, 262146, 196633, 0, 262146, 196634, 0, 327681, 262145, 0, 327682, 262153, 0, 458758, 262167, 0, 327682, 327681, 0, 327682, 327692, 0, 458758, 327699, 0, 262144, 327700, 0, 262146, 327701, 0, 262146, 327702, 0, 262146, 327703, 0, 327681, 393217, 0, 327682, 393221, 0, 458758, 393232, 0, 262144, 393233, 0, 262146, 393234, 0, 262146, 393235, 0, 327681, 458753, 0, 327682, 458768, 0, 327682, 524289, 0, 327682, 524304, 0, 327682, 589825, 0, 327680, 589826, 0, 262146, 589827, 0, 262146, 589828, 0, 262146, 589829, 0, 262146, 589830, 0, 262146, 589831, 0, 262146, 589832, 0, 262146, 589833, 0, 262146, 589834, 0, 262146, 589835, 0, 262146, 589836, 0, 262146, 589837, 0, 262146, 589838, 0, 262146, 589839, 0, 262146, 589840, 0, 327681 )
 _sections_unfolded = [ "Cell", "Collision", "Material", "Occluder", "Pause", "Transform", "Visibility", "Z Index" ]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." index="5"]
+[node name="VisionMode" type="CanvasModulate" parent="." index="5"]
 
 color = Color( 0.179611, 0.185899, 0.582031, 1 )
+script = ExtResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VisionMode" index="0"]
+
+stream = null
+volume_db = -15.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [node name="Guards" type="Node2D" parent="." index="6"]
 
-[node name="Guard" parent="Guards" index="0" instance=ExtResource( 7 )]
+[node name="Guard" parent="Guards" index="0" instance=ExtResource( 8 )]
 
 position = Vector2( 492.143, 238.431 )
 
-[node name="Guard2" parent="Guards" index="1" instance=ExtResource( 7 )]
+[node name="Guard2" parent="Guards" index="1" instance=ExtResource( 8 )]
 
 position = Vector2( 1229.47, 108.095 )
 
-[node name="Guard3" parent="Guards" index="2" instance=ExtResource( 7 )]
+[node name="Guard3" parent="Guards" index="2" instance=ExtResource( 8 )]
 
 position = Vector2( 1800.54, -381.384 )
 rotation = 4.71239
 _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 
-[node name="Guard4" parent="Guards" index="3" instance=ExtResource( 7 )]
+[node name="Guard4" parent="Guards" index="3" instance=ExtResource( 8 )]
 
 position = Vector2( 611.256, 70.809 )
 rotation = 4.71239
@@ -191,7 +208,7 @@ _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 [node name="Furniture" type="TileMap" parent="." index="7"]
 
 mode = 0
-tile_set = ExtResource( 8 )
+tile_set = ExtResource( 9 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -208,5 +225,7 @@ occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( -327667, 4, 0, -327658, 4, 0, -196596, 5, 0, -196578, 4, 0, -131050, 2, 0, -65513, 1, 0, 28, 1, 0, 29, 1, 0, 30, 1, 0, 524293, 4, 0, 524294, 0, 0 )
 _sections_unfolded = [ "Collision" ]
+
+[connection signal="timeout" from="Player/VisionModeTimer" to="Player" method="_on_VisionModeTimer_timeout"]
 
 
