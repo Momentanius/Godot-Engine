@@ -29,7 +29,7 @@ tracks/0/keys = {
 "values": [ -30.0, -30.0, 30.0, 30.0 ]
 }
 
-[node name="SecurityCamera" type="Node2D"]
+[node name="SecurityCamera" type="Node2D" index="0"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
