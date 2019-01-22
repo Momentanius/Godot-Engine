@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Navigation2D.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Destinations.gd" type="Script" id=2]
@@ -11,7 +11,8 @@
 [ext_resource path="res://Scripts/VisionMode.gd" type="Script" id=9]
 [ext_resource path="res://Scenes/Characters/Guard.tscn" type="PackedScene" id=10]
 [ext_resource path="res://TileSets/Furniture.tres" type="TileSet" id=11]
-[ext_resource path="res://Scenes/Combination.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Computer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Combination.tscn" type="PackedScene" id=13]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -272,7 +273,13 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="Computers" type="Node2D" parent="." index="10"]
 
-[node name="Node" parent="." index="11" instance=ExtResource( 12 )]
+[node name="Computer" parent="Computers" index="0" instance=ExtResource( 12 )]
+
+position = Vector2( 214.947, -31.844 )
+rotation = 1.5708
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="CombinationGenerator" parent="." index="11" instance=ExtResource( 13 )]
 
 [connection signal="timeout" from="Player/VisionModeTimer" to="Player" method="_on_VisionModeTimer_timeout"]
 
