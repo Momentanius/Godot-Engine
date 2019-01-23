@@ -4,11 +4,14 @@ var can_click = false
 
 var combination
 
+signal combination
+
 export var combination_lenght = 4
 
 func _ready():
 	$Light2D.enabled = false
 	generate_combination()
+	emit_signal("combination", combination)
 
 
 func _on_Computer_body_entered(body):

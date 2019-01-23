@@ -13,7 +13,7 @@ func _on_Door_body_entered(body):
 
 #Usado no lugar de _input por causa qeu se não ele poderia clicar emq ualquer lugar da tela
 func _input_event(viewport, event, shape_idx):
-	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_click and not $AnimationPlayer.is_playing():
+	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_click:
 		open_door()
 
 func _on_Door_body_exited(body):
@@ -22,4 +22,5 @@ func _on_Door_body_exited(body):
 
 
 func open_door():
-	$AnimationPlayer.play("Open")
+	if not $AnimationPlayer.is_playing():
+		$AnimationPlayer.play("Open")
