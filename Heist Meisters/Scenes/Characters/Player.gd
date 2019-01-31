@@ -3,6 +3,9 @@ extends "res://Scripts/Character.gd"
 var motion = Vector2()
 var torchHidden = true
 var vision_change_on_cooldown = false
+
+var disguised
+
 enum vision_mode {DARK, NIGHTVISION}
 
 
@@ -13,6 +16,29 @@ func _ready():
 func _process(delta):
 	update_motion(delta)
 	move_and_slide(motion)
+
+func toggle_disguise():
+	if disguised:
+		reveal()
+	else:
+		disguise()
+
+func reveal():
+	$Sprite.texture = load(Global.player_sprite)
+	$Light2D.texture = load(Global.player_sprite)
+	$LightOccluder2D.occluder = load(Global.player_occluder)
+	collision_layer = 1
+	disguised = false
+	
+func disguise():
+	$Sprite.texture = load(Global.box_sprite)
+	$Light2D.texture = load(Global.box_sprite)
+	$LightOccluder2D.occluder = load(Global.box_occluder)
+	collision_layer = 16
+	disguised = true
+
+	
+
 
 #É chamado se o jogador apertar um botão
 #func _input(event):
@@ -32,6 +58,8 @@ func _input(event):
 		vision_change_on_cooldown = true
 		$VisionModeTimer.start()
 		cycle_vision_mode()
+	if Input.is_action_just_pressed("ui_toggle_disguise"):
+		toggle_disguise()
 		
 
 func cycle_vision_mode():

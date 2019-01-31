@@ -30,6 +30,9 @@ func Player_is_in_line_of_sight():
 	var space = get_world_2d().direct_space_state
 	var LOS_obstacle = space.intersect_ray(global_position, Player.global_position, [self], collision_mask)
 	
+	if not LOS_obstacle:
+		return false
+	
 	#qual a distância do jogador pra line of sight?
 	var distance_player = Player.global_position.distance_to(global_position)
 	var player_in_range = distance_player < MAX_DETECTION_RANGE
