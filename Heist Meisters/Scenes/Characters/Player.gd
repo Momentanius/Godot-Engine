@@ -1,29 +1,41 @@
 extends "res://Scripts/Character.gd"
 
+export var disguises = 3 #Number of disguises you start with
+export var disguise_duration = 5 #how long disguise can last
+export var disguise_slowdown = 0.25
+
 var motion = Vector2()
 var torchHidden = true
 var vision_change_on_cooldown = false
 
-var disguised
+var disguised = false
+var velocity_multiplier = 1
 
 enum vision_mode {DARK, NIGHTVISION}
 
 
 func _ready():
+	reveal()
 	Global.Player = self
 	vision_mode = DARK
+	$Timer.wait_time = disguise_duration
 
 func _process(delta):
 	update_motion(delta)
-	move_and_slide(motion)
+	move_and_slide(motion * velocity_multiplier)
+	if disguised:
+		$Label.rect_rotation = -rotation_degrees
+		$Label.text = str($Timer.time_left).pad_decimals(2)
 
 func toggle_disguise():
 	if disguised:
 		reveal()
-	else:
+	elif disguises > 0:
 		disguise()
 
 func reveal():
+	$Label.visible = false
+	velocity_multiplier = 1
 	$Sprite.texture = load(Global.player_sprite)
 	$Light2D.texture = load(Global.player_sprite)
 	$LightOccluder2D.occluder = load(Global.player_occluder)
@@ -31,13 +43,15 @@ func reveal():
 	disguised = false
 	
 func disguise():
+	$Label.visible = true
+	disguises-=1
+	velocity_multiplier = disguise_slowdown
+	$Timer.start()
 	$Sprite.texture = load(Global.box_sprite)
 	$Light2D.texture = load(Global.box_sprite)
 	$LightOccluder2D.occluder = load(Global.box_occluder)
 	collision_layer = 16
 	disguised = true
-
-	
 
 
 #É chamado se o jogador apertar um botão
