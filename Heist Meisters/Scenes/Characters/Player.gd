@@ -15,10 +15,11 @@ enum vision_mode {DARK, NIGHTVISION}
 
 
 func _ready():
-	reveal()
 	Global.Player = self
 	vision_mode = DARK
 	$Timer.wait_time = disguise_duration
+	update_disguise_display()
+	reveal()
 
 func _process(delta):
 	update_motion(delta)
@@ -45,6 +46,7 @@ func reveal():
 func disguise():
 	$Label.visible = true
 	disguises-=1
+	update_disguise_display()
 	velocity_multiplier = disguise_slowdown
 	$Timer.start()
 	$Sprite.texture = load(Global.box_sprite)
@@ -52,6 +54,10 @@ func disguise():
 	$LightOccluder2D.occluder = load(Global.box_occluder)
 	collision_layer = 16
 	disguised = true
+
+
+func update_disguise_display():
+	get_tree().call_group("disguise_display", "update_disguises", disguises)
 
 
 #É chamado se o jogador apertar um botão
