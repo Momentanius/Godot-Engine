@@ -60,6 +60,7 @@ func update_disguise_display():
 	get_tree().call_group("disguise_display", "update_disguises", disguises)
 
 
+
 #É chamado se o jogador apertar um botão
 #func _input(event):
 #	if Input.is_action_just_pressed("ui_select"):
@@ -111,3 +112,8 @@ func update_motion(delta):
 
 func _on_VisionModeTimer_timeout():
 	vision_change_on_cooldown = false
+
+func collect_briefcase():
+	var loot = Node.new()
+	loot.set_name('briefcase')
+	add_child(loot)
