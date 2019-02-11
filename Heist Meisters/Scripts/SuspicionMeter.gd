@@ -16,4 +16,4 @@ func _process(delta):
 	value = suspicion
 
 func end_game():
-	get_tree().quit()
+	get_tree().change_scene("res://Scenes/GameOverScreen.tscn")
