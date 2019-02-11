@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://GFX/Interface/PNG/glassPanel_cornerTL.png" type="Texture" id=1]
 [ext_resource path="res://GFX/Interface/Fonts/kenvector_future.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Scripts/SuspicionMeter.gd" type="Script" id=5]
 [ext_resource path="res://GFX/Interface/PNG/glassPanel_cornerBR.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/DisguiseDisplay.gd" type="Script" id=7]
+[ext_resource path="res://GFX/Interface/PNG/glassPanel_cornerTR.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/LootContainer.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -41,7 +43,40 @@ ItemList/styles/selected = null
 ItemList/styles/selected_focus = null
 _sections_unfolded = [ "ItemList", "ItemList/styles" ]
 
-[node name="GUI" type="CanvasLayer" index="0"]
+[sub_resource type="DynamicFont" id=4]
+
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="Theme" id=6]
+
+ItemList/colors/font_color = Color( 0.627451, 0.627451, 0.627451, 1 )
+ItemList/colors/font_color_selected = Color( 1, 1, 1, 1 )
+ItemList/colors/guide_color = Color( 0, 0, 0, 0.1 )
+ItemList/constants/hseparation = 4
+ItemList/constants/icon_margin = 4
+ItemList/constants/line_separation = 2
+ItemList/constants/vseparation = 2
+ItemList/fonts/font = null
+ItemList/styles/bg = SubResource( 5 )
+ItemList/styles/bg_focus = null
+ItemList/styles/cursor = null
+ItemList/styles/cursor_unfocused = null
+ItemList/styles/selected = null
+ItemList/styles/selected_focus = null
+_sections_unfolded = [ "ItemList", "ItemList/styles" ]
+
+[node name="GUI" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -215,10 +250,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 4.0
-margin_top = 3.0
-margin_right = 270.0
-margin_bottom = 17.0
+margin_right = 266.0
+margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -259,5 +292,82 @@ icon_scale = 0.5
 fixed_icon_size = Vector2( 0, 0 )
 script = ExtResource( 7 )
 _sections_unfolded = [ "Columns", "Icon", "Size Flags" ]
+
+[node name="LootContainer" type="NinePatchRect" parent="." index="2" groups=[
+"interface",
+]]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -122.0
+margin_right = 250.0
+margin_bottom = -20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 8 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+script = ExtResource( 9 )
+_sections_unfolded = [ "Margin", "Patch Margin", "Rect" ]
+
+[node name="Label" type="Label" parent="LootContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 11.0
+margin_top = 19.0
+margin_right = 79.0
+margin_bottom = 42.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "Text"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="LootList" type="ItemList" parent="LootContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 21.0
+margin_top = 50.0
+margin_right = 218.0
+margin_bottom = 90.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = SubResource( 6 )
+items = [  ]
+select_mode = 0
+allow_reselect = false
+max_columns = 5
+same_column_width = true
+icon_mode = 1
+icon_scale = 0.5
+fixed_icon_size = Vector2( 0, 0 )
+_sections_unfolded = [ "Columns", "Icon", "Theme" ]
 
 
