@@ -89,40 +89,7 @@ tile_data = PoolIntArray( -917476, 7, 0, -851940, 7, 0, -851939, 7, 0, -851938, 
 
 [node name="Player" parent="." index="2" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 413.484, 267.098 )
-
-[node name="Camera2D" type="Camera2D" parent="Player" index="2"]
-
-anchor_mode = 1
-rotating = false
-current = true
-zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = -10000000
-limit_right = 10000000
-limit_bottom = 10000000
-limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-
-[node name="VisionModeTimer" type="Timer" parent="Player" index="5"]
-
-process_mode = 1
-wait_time = 1.25
-one_shot = false
-autostart = false
 
 [node name="SecurityCameras" type="Node2D" parent="." index="3"]
 
@@ -213,7 +180,6 @@ _sections_unfolded = [ "Cell", "Collision", "Material", "Occluder", "Pause", "Tr
 
 [node name="VisionMode" type="CanvasModulate" parent="." index="7"]
 
-editor/display_folded = true
 visible = false
 color = Color( 0.0588235, 0.113725, 0.32549, 1 )
 script = ExtResource( 9 )
@@ -295,8 +261,6 @@ margin_bottom = 43.0
 [node name="BriefCase" parent="." index="14" instance=ExtResource( 16 )]
 
 position = Vector2( 582.109, 532.146 )
-
-[connection signal="timeout" from="Player/VisionModeTimer" to="Player" method="_on_VisionModeTimer_timeout"]
 
 [connection signal="combination" from="Computers/Computer" to="LockedDoor/LockedDoor2" method="_on_Computer_combination"]
 

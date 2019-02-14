@@ -110,11 +110,12 @@ func update_motion(delta):
 	else:
 		motion.x = lerp(motion.x, 0, FRICTION)
 
-func _on_VisionModeTimer_timeout():
-	vision_change_on_cooldown = false
 
 func collect_briefcase():
 	var loot = Node.new()
 	loot.set_name('briefcase')
 	add_child(loot)
 	get_tree().call_group("interface", "collect_loot")
+
+func _on_VisionModeTimer_timeout():
+	vision_change_on_cooldown = false
