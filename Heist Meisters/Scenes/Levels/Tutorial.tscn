@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Tutorial.gd" type="Script" id=1]
 [ext_resource path="res://TileSets/FloorTile.tres" type="TileSet" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Scenes/Levels/torchmap.png" type="Texture" id=10]
 [ext_resource path="res://GFX/Interface/PNG/crossair_blueOutline.png" type="Texture" id=11]
 [ext_resource path="res://SFX/message.wav" type="AudioStream" id=12]
+[ext_resource path="res://Scenes/TutorialGUI.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -212,7 +213,6 @@ shadow_item_cull_mask = 1
 
 [node name="ObjectiveMove" type="Area2D" parent="ObjectiveAreas" index="0"]
 
-editor/display_folded = true
 position = Vector2( 63.1748, 94.7622 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -230,7 +230,6 @@ shape = SubResource( 1 )
 
 [node name="ObjectiveDoor" type="Area2D" parent="ObjectiveAreas" index="1"]
 
-editor/display_folded = true
 position = Vector2( 229.362, 353.462 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -248,7 +247,6 @@ shape = SubResource( 2 )
 
 [node name="ObjectiveNightvision" type="Area2D" parent="ObjectiveAreas" index="2"]
 
-editor/display_folded = true
 position = Vector2( 516.085, 214.027 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -283,6 +281,8 @@ playback_speed = 1.0
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
+
+[node name="TutorialGUI" parent="." index="14" instance=ExtResource( 13 )]
 
 [connection signal="body_entered" from="BriefCase" to="." method="_on_BriefCase_body_entered"]
 
