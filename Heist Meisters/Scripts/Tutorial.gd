@@ -25,7 +25,9 @@ func update_pointer_position(number):
 		$Tween.start()
 		$ObjectiveMarkers.remove_child(marker) #Remova a criança mais atual.
 		$AudioStreamPlayer.play()
+		$TutorialGUI/AnimationPlayer.play("MessageTransition")
 		$TutorialGUI/Popup/Label.text = text[str(number)]
+		
 
 func _on_ObjectiveMove_body_entered(body):
 	update_pointer_position(1)
